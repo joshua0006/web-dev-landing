@@ -9,18 +9,15 @@ import {
   Laptop, 
   Mail, 
   Menu, 
-  Moon, 
   Phone, 
   Rocket, 
   Search, 
   Shield, 
   Smartphone, 
   Star, 
-  Sun, 
   Users, 
   Zap 
 } from "lucide-react"
-import { useTheme } from "next-themes"
 import Image from "next/image"
 import { useState } from "react"
 
@@ -32,6 +29,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import HeroGeometric from "@/components/hero-geometric"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const services = [
   {
@@ -146,7 +144,6 @@ const testimonials = [
 ]
 
 export default function LandingPage() {
-  const { theme, setTheme } = useTheme()
   const [selectedProject, setSelectedProject] = useState<typeof portfolio[0] | null>(null)
   const [activeFilter, setActiveFilter] = useState("All")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -173,14 +170,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            </Button>
+            <ThemeToggle />
             <Button variant="default" className="hidden md:inline-flex">
               Get Started
             </Button>
